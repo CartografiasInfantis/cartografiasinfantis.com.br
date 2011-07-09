@@ -11,7 +11,9 @@
 #   - dist/**/*.js
 #
 src_files:
-    - public/js/*.js
+    - public/js/libs/*.js
+    - public/js/places.js
+    - public/js/map.js
 
 # stylesheets
 #
