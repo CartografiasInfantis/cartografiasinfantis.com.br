@@ -1,26 +1,22 @@
 var CartografiasInfantis = window.CartografiasInfantis || {};
 
 CartografiasInfantis.Map = Map = function() {  
-  this.apiLoader = new Map.ApiLoader(this);
-
-  this.setup = function() {
-    this.apiLoader.loadApi();
-  }
 }
 
-Map.ApiLoader = function(Map) {
-  var self = this;
+Map.ApiLoader = function(map) {
+  var self = this
+    , _map = map;
 
   function getCallbackAlias() {
     var alias = 'callback' + Math.floor(Math.random() * 1000);  
     window[alias] = function() { 
-      Map.apiLoaded.apply(Map);
+      _map.apiLoaded.apply(_map);
     };
     return alias;
   }
 
   this.loadApi = function() {
-    if (window.google && window.google.maps) return;
+    if (this.getApi()) return;
 
     var callbackAlias = getCallbackAlias(),
         script = document.createElement("script");
@@ -29,4 +25,15 @@ Map.ApiLoader = function(Map) {
     script.src = "http://maps.google.com/maps/api/js?sensor=false&callback=" + callbackAlias;
     document.body.appendChild(script);
   }
+
+  this.getApi = function() {
+    if (window.google && window.google.maps) {
+      return window.google.maps;
+    }
+
+    return false;
+  }
 }
+
+
+

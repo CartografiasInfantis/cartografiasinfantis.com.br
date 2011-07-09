@@ -1,10 +1,16 @@
 describe('CartografiasInfantis.Map', function() {
-  var Map = CartografiasInfantis.Map;
+  var Map     = CartografiasInfantis.Map;
+  var google  = {};
 
   describe('ApiLoader', function() {
+    afterEach(function() {
+      google        = window.google;
+      window.google = undefined;
+    });
+
     it('should call callback after API is loaded', function() {
-      var obj = {apiLoaded: jasmine.createSpy('Map.apiLoaded')},
-          loader = new Map.ApiLoader(obj);
+      var obj = {apiLoaded: jasmine.createSpy('Map.apiLoaded')}
+        ,  loader = new Map.ApiLoader(obj);
 
       loader.loadApi();
 
@@ -17,5 +23,4 @@ describe('CartografiasInfantis.Map', function() {
       });
     });
   });
-
 });
