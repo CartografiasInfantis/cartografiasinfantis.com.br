@@ -88,8 +88,12 @@ a:hover { color: #036; }
 
 /* grid */
 
+html, body, #container, #sidebar {
+  height: 100%;
+}
+
 #main {
-  
+  margin-left: 270px;
 }
 
 #sidebar, #content {
@@ -100,12 +104,10 @@ a:hover { color: #036; }
   float: left;
   background-color: #F5F5F5;
   width: 220px;
-  position: fixed;
   border-right: 10px solid white;
   -moz-box-shadow: 0.5px -3px 24px #666;
   -webkit-box-shadow: 0.5px -3px 24px #666;
   box-shadow: 0.5px -3px 24px #666;
-  height: 100%;
 }
   .logo {
     width: 200px
