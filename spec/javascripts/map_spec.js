@@ -9,17 +9,17 @@ describe('CartografiasInfantis.Map', function() {
     });
 
     it('should call callback after API is loaded', function() {
-      var obj = {apiLoaded: jasmine.createSpy('Map.apiLoaded')}
-        ,  loader = new Map.ApiLoader(obj);
+      var obj = {apiLoaded: jasmine.createSpy('Map.apiLoaded')};
 
-      loader.loadApi();
+      Map.ApiLoader.initialize(obj);
+      Map.ApiLoader.loadApi();
 
       waitsFor(function() {
         return window.hasOwnProperty('google');
       });
 
       runs(function() {
-        expect(obj.apiLoaded).toHaveBeenCalled();  
+        expect(obj.apiLoaded).toHaveBeenCalledWith(window.google.maps);  
       });
     });
   });
