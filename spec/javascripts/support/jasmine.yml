@@ -12,8 +12,7 @@
 #
 src_files:
     - public/js/libs/*.js
-    - public/js/places.js
-    - public/js/map.js
+    - public/js/app/*.js
 
 # stylesheets
 #
