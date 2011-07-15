@@ -97,9 +97,10 @@
   <script>
     var map = {
       apiLoaded: function(api) {
-        new api.Map()
+        var map = Map.create(document.getElementById('map'));
+        map.render();
       }
-    }
+    };
 
     Map.ApiLoader.initialize(map);
     Map.ApiLoader.loadApi();
@@ -108,5 +109,5 @@
 	<!--[if lt IE 7 ]>
 	<script src="js/libs/dd_belatedpng.js"></script>
 	<script> DD_belatedPNG.fix('img, .png_bg');</script>
-	<![endif]--></body>
+	<![endif]--></body>
 </html>
