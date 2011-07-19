@@ -93,17 +93,20 @@
 	</div>
 	<script src="js/plugins.js"></script>
 
+  <script src="js/app.js"></script>
   <script src="js/app/map.js"></script>
   <script>
     var map = {
       apiLoaded: function(api) {
-        var map = Map.create(document.getElementById('map'));
-        map.render();
+        var map = new CartografiasInfantis.Map.Widget([])
+          , element = document.getElementById('map');
+
+        map.renderIn(element);
       }
     };
 
-    Map.ApiLoader.initialize(map);
-    Map.ApiLoader.loadApi();
+    CartografiasInfantis.Map.ApiLoader.initialize(map);
+    CartografiasInfantis.Map.ApiLoader.loadApi();
   </script>
 
 	<!--[if lt IE 7 ]>

@@ -1,8 +1,6 @@
 var CartografiasInfantis = window.CartografiasInfantis || {};
 
-CartografiasInfantis.Map = Map = function() {
-   
-}
+var Map = CartografiasInfantis.Map = {};
 
 Map.Api = {
   getApi: function() {
@@ -11,6 +9,24 @@ Map.Api = {
       && window.google.hasOwnProperty('maps');
 
     if (loaded) return window.google.maps;
+  },
+  getCoordinate: function(lat, lng) {
+    var api = this.getApi();
+    return new api.LatLng(lat, lng);
+  },
+  getMapType: function(type) {
+    var api = this.getApi();
+    return api.MapTypeId[type.toUpperCase()];
+  },
+  renderMap: function(element, opts) {
+    var api = this.getApi()
+      , defaultOpts = {
+          mapTypeId: this.getMapType('terrain'),
+          center: this.getCoordinate(0, 0),
+          zoom: 10
+        };
+
+    return new api.Map(element, opts || defaultOpts);
   }
 }
 
@@ -37,53 +53,16 @@ Map.ApiLoader = {
   }
 }
 
-Map.create = function (element){
-  var map = Object.create(Map.prototype),
-      mapView;
+Map.Widget = function(collection) {
+  this.collection = collection;
+};
 
-  map.getElement = function() {
-    return element;
-  }
-
-  map.getMapView = function() {
-    if (!mapView) mapView = Map.MapView.create(map);
-    return mapView;
-  }
-
-  return map;
-}
-
-Map.DSL = {
-  getCoordinate: function(lat, lng) {
-    return new google.maps.LatLng(lat, lng);
-  },
-  getMapType: function(type) {
-    return google.maps.MapTypeId[type.toUpperCase()];
-  },
-  renderMap: function(opts) {
-    var element = this.getElement()
-      , defaultOpts = {
-          mapTypeId: this.getMapType('terrain'),
-          center: this.getCoordinate(0, 0),
-          zoom: 10
-        };
-
-    return new google.maps.Map(element, opts || defaultOpts);
-  },
-  addMarker: function() {
-  }
-}
-
-Map.MapView = {};
-Map.MapView.create = function(control) {
-  var view = Object.create(Map.DSL);
-  view.getElement = control.getElement;
-
-  return view;
-}
-
-Map.prototype = {
-  render: function() {
-    this.getMapView().renderMap();
+Map.Widget.prototype = {
+  renderIn: function(element) {
+    Map.Api.renderMap(element);
+    
+    for (var i = this.collection.length; --i <= 0;) {
+      
+    }
   }
 }
