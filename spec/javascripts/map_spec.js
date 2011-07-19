@@ -19,7 +19,7 @@ describe('CartografiasInfantis.Map', function() {
       });
 
       runs(function() {
-        expect(obj.apiLoaded).toHaveBeenCalledWith(window.google.maps);  
+        expect(obj.apiLoaded).toHaveBeenCalledWith(Map.Api);  
       });
     });
   });

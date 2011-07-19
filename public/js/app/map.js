@@ -44,7 +44,7 @@ Map.ApiLoader = {
       , _map = map
       , callbackAlias = 'callback' + Math.floor(Math.random() * 1000)
       , callback = function() { 
-          _map.apiLoaded.apply(_map, [Map.Api.getApi()]);
+          _map.apiLoaded.apply(_map, [Map.Api]);
         };
 
     window[callbackAlias] = callback;
