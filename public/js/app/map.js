@@ -10,7 +10,7 @@ Map.Api = {
 
     if (loaded) return window.google.maps;
   },
-  getCoordinate: function(lat, lng) {
+  getCoordinates: function(lat, lng) {
     var api = this.getApi();
     return new api.LatLng(lat, lng);
   },
@@ -22,7 +22,7 @@ Map.Api = {
     var api = this.getApi()
       , defaultOpts = {
           mapTypeId: this.getMapType('terrain'),
-          center: this.getCoordinate(0, 0),
+          center: this.getCoordinates(0, 0),
           zoom: 10
         };
 
