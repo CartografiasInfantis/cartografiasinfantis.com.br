@@ -27,6 +27,13 @@ Map.Api = {
         };
 
     return new api.Map(element, opts || defaultOpts);
+  },
+  geocodeAddress: function(address, callback) {
+    var api = this.getApi();
+
+    (new api.Geocoder()).geocode({address: address}, function() { 
+      callback.call(callback, arguments[0][0]); 
+    });
   }
 }
 
