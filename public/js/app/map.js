@@ -61,7 +61,7 @@ Map.Widget.prototype = {
   renderIn: function(element) {
     Map.Api.renderMap(element);
     
-    for (var i = this.collection.length; --i <= 0;) {
+    for (var i = this.collection.length; --i >= 0;) {
       
     }
   }
