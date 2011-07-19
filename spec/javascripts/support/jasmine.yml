@@ -12,6 +12,7 @@
 #
 src_files:
     - public/js/libs/*.js
+    - public/js/app.js
     - public/js/app/*.js
 
 # stylesheets

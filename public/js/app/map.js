@@ -15,6 +15,7 @@ Map.Api = {
 }
 
 Map.ApiLoader = {
+  URL: "http://maps.google.com/maps/api/js?sensor=false",
   initialize: function(map) {
     var self = this
       , _map = map
@@ -31,11 +32,7 @@ Map.ApiLoader = {
         return;
       }
 
-      var script = document.createElement("script");
-
-      script.type = "text/javascript";
-      script.src = "http://maps.google.com/maps/api/js?sensor=false&callback=" + callbackAlias;
-      document.body.appendChild(script);
+      App.loadScript(Map.ApiLoader.URL + "&callback=" + callbackAlias);
     }
   }
 }
