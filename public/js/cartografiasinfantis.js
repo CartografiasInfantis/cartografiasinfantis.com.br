@@ -1,9 +1,15 @@
 var map = {
   apiLoaded: function(api) {
-    var map = new CartografiasInfantis.Map.Widget([])
-      , element = document.getElementById('map');
+    var places = ['Parcão, Porto Alegre', 'Jardim Botânico, Porto Alegre']
+      , center = places[Math.round(Math.random() * (places.length - 1))]
 
-    map.renderIn(element);
+    api.geocodeAddress(center, function(place) {
+      var map = new CartografiasInfantis.Map.Widget([])
+        , element = document.getElementById('map');
+
+      map.setCenter(api.getCoordinatesOf(place));
+      map.renderIn(element);
+    });
   }
 };
 

@@ -65,11 +65,18 @@ Map.ApiLoader = {
 
 Map.Widget = function(collection) {
   this.collection = collection;
+  this.options = {
+    mapTypeId: Map.Api.getMapType('satellite'),
+    zoom: 15
+  };
 };
 
 Map.Widget.prototype = {
+  setCenter: function(coordinates) {
+    this.options.center = coordinates;
+  },
   renderIn: function(element) {
-    Map.Api.renderMap(element);
+    Map.Api.renderMap(element, this.options);
     
     for (var i = this.collection.length; --i >= 0;) {
       
