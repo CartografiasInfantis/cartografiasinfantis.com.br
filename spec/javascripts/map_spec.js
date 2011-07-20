@@ -3,9 +3,13 @@ describe('CartografiasInfantis.Map', function() {
   var google  = {};
 
   describe('ApiLoader', function() {
+    beforeEach(function() {
+      google = window.google;
+      delete window.google;
+    });
+
     afterEach(function() {
-      google        = window.google;
-      window.google = undefined;
+      window.google = google;
     });
 
     it('should call callback after API is loaded', function() {
