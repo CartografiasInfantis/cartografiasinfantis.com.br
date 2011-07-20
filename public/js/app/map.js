@@ -14,6 +14,9 @@ Map.Api = {
     var api = this.getApi();
     return new api.LatLng(lat, lng);
   },
+  getCoordinatesOf: function(place) {
+    return place.geometry.location;
+  },
   getMapType: function(type) {
     var api = this.getApi();
     return api.MapTypeId[type.toUpperCase()];
