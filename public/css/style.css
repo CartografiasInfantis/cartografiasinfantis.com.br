@@ -108,7 +108,6 @@ html, body, header, #container, #main{
 }
 
 #sidebar {
-  text-align: center;
   float: left;
   background-color: #F5F5F5;
   width: 220px;
@@ -123,10 +122,29 @@ html, body, header, #container, #main{
     width: 200px
   }
 
+  #sidebar ul {
+    text-align: left;
+    font-size: 1.2em;
+    margin-top: 20px;
+  }
+    #sidebar ul a {
+      text-decoration: none;
+    }
+
   .credits {
     position: absolute;
     bottom: 50px;
+    margin: 0 6%
   }
+    img {
+      width: 190px;
+    }
+    aside {
+      margin-top: 5px;
+      width: 190px;
+      font-style: italic;
+      font-size: 0.8em;
+    }
 
 #content {
   position: relative;
