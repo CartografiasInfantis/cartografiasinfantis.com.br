@@ -32,6 +32,12 @@ Map.Api = {
     (new api.Geocoder()).geocode({address: address}, function() { 
       callback.call(callback, arguments[0][0]); 
     });
+  },
+  renderMapMarker: function(map, markerData) {
+    var api = this.getApi()
+      , marker = new api.Marker(markerData);
+
+    marker.setMap(map);
   }
 }
 
