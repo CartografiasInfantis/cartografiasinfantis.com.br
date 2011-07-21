@@ -21,15 +21,10 @@ Map.Api = {
     var api = this.getApi();
     return api.MapTypeId[type.toUpperCase()];
   },
-  renderMap: function(element, opts) {
+  renderMap: function(element, options) {
     var api = this.getApi()
-      , defaultOpts = {
-          mapTypeId: this.getMapType('terrain'),
-          center: this.getCoordinates(0, 0),
-          zoom: 10
-        };
 
-    return new api.Map(element, opts || defaultOpts);
+    return new api.Map(element, options || {});
   },
   geocodeAddress: function(address, callback) {
     var api = this.getApi();
