@@ -112,10 +112,10 @@ html, body, header, #container, #main{
   background-color: #F5F5F5;
   width: 220px;
   border-right: 10px solid white;
-  -moz-box-shadow: 0.5px -3px 24px #666;
-  -webkit-box-shadow: 0.5px -3px 24px #666;
-  box-shadow: 0.5px -3px 24px #666;
-  position: relative;
+  -moz-box-shadow: 0.5px -3px 24px #333;
+  -webkit-box-shadow: 0.5px -3px 24px #333;
+  box-shadow: 0.5px -3px 24px #333;
+  position: fixed;
   z-index: 1000;
 }
   .logo {
