@@ -108,7 +108,7 @@ html, body, header, #container, #main{
 }
 
 #sidebar {
-  text-align: center
+  text-align: center;
   float: left;
   background-color: #F5F5F5;
   width: 220px;
@@ -129,6 +129,7 @@ html, body, header, #container, #main{
   }
 
 #content {
+  position: relative;
   background-color: #F6A844;
   margin: 0 auto;
   width: 680px;
