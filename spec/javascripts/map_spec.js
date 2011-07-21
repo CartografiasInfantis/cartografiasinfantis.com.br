@@ -1,8 +1,9 @@
 describe('CartografiasInfantis.Map', function() {
-  var Map     = CartografiasInfantis.Map;
-  var google  = {};
+  var Map = CartografiasInfantis.Map;
 
   describe('ApiLoader', function() {
+    var google;
+
     beforeEach(function() {
       google = window.google;
       delete window.google;
