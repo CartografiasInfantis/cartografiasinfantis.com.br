@@ -90,12 +90,13 @@ a:hover { color: #036; }
 
 html, body, header, #container, #main{
   height: 100%;
+  overflow-x: hidden;
 }
 
 #map {
   position: absolute;
-  height: 600px;
-  width: 600px;
+  height: 100%;
+  width: 100%;
 }
 
 #main {
