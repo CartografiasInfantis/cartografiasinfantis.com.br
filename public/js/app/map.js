@@ -64,6 +64,25 @@ Map.ApiLoader = {
   }
 }
 
+Map.MapCanvas = function(options) {
+  this.options = options || {};
+  this.markers = [];
+}
+
+Map.MapCanvas.prototype = {
+  addMarker: function(marker) {
+    this.markers.push(marker);
+  },
+  paintIn: function(element) {
+    var map = Map.Api.renderMap(element, this.options)
+      , markers = this.markers;
+
+    for (var i = markers.length; --i >= 0;) {
+      Map.Api.renderMapMarker(map, markers[i]);
+    }
+  }
+};
+
 Map.Widget = function(collection) {
   this.collection = collection;
   this.options = {
