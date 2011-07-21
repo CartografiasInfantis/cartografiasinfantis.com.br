@@ -100,17 +100,14 @@ html, body, header, #container, #main{
 }
 
 #main {
-  margin-left: 270px;
-}
-
-#sidebar, #content {
-  padding: 20px;
+  margin-left: 250px;
 }
 
 #sidebar {
+  padding: 20px;
   float: left;
   background-color: #F5F5F5;
-  width: 220px;
+  width: 200px;
   border-right: 10px solid white;
   -moz-box-shadow: 0.5px -3px 24px #333;
   -webkit-box-shadow: 0.5px -3px 24px #333;
@@ -147,22 +144,90 @@ html, body, header, #container, #main{
     }
 
 #content {
+  padding: 20px;
   position: relative;
-  background-color: #F6A844;
   margin: 0 auto;
-  width: 680px;
+  width: 700px;
+  background: #ffaf4b; /* Old browsers */
+  background: -moz-linear-gradient(top, #ffaf4b 0%, #ff920a 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffaf4b), color-stop(100%,#ff920a)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ffaf4b 0%,#ff920a 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #ffaf4b 0%,#ff920a 100%); /* Opera11.10+ */
+  background: -ms-linear-gradient(top, #ffaf4b 0%,#ff920a 100%); /* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', endColorstr='#ff920a',GradientType=0 ); /* IE6-9 */
+  background: linear-gradient(top, #ffaf4b 0%,#ff920a 100%); /* W3C */
+  -moz-box-shadow: 0.5px -3px 24px #333;
+  -webkit-box-shadow: 0.5px -3px 24px #333;
+  box-shadow: 0.5px -3px 24px #333;
+  -moz-border-radius-topleft: 0px;
+  -moz-border-radius-topright: 0px;
+  -moz-border-radius-bottomright: 15px;
+  -moz-border-radius-bottomleft: 15px;
+  -webkit-border-radius: 0px 0px 15px 15px;
+  border-radius: 0px 0px 15px 15px; 
 }
+
+  #content .images {
+    position: relative;
+    z-index: 1; /* prevent shadows falling behind containers with backgrounds */
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #content figure {
+    position: relative;
+    float: left;
+    padding: 5px;
+    border: 1px solid #efefef;
+    margin: 0 20px 20px 0;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+  }
+
+  #content .images figure:before,
+  #content .images figure:after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    width: 70%;
+    max-width: 300px; /* avoid rotation causing ugly appearance at large container widths */
+    height: 55%;
+    -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    -webkit-transform: skew(-15deg) rotate(-6deg);
+    -moz-transform: skew(-15deg) rotate(-6deg);
+    -ms-transform: skew(-15deg) rotate(-6deg);
+    -o-transform: skew(-15deg) rotate(-6deg);
+    transform: skew(-15deg) rotate(-6deg);
+  }
+
+  #content .images figure:after {
+    left: auto;
+    right: 10px;
+    -webkit-transform: skew(15deg) rotate(6deg);
+    -moz-transform: skew(15deg) rotate(6deg);
+    -ms-transform: skew(15deg) rotate(6deg);
+    -o-transform: skew(15deg) rotate(6deg);
+    transform: skew(15deg) rotate(6deg);
+  }
 
 figure {
   float: left;
   margin: 0 10px 0 0;
 }
 figure.last {
-  margin: 0
+  margin: 0 !important
 }
   figure img {
-    width: 128px;
-    height: 128px;
+    width: 208px;
+    height: 208px;
   }
   
 details {
