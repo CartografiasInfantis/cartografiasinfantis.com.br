@@ -5,7 +5,7 @@ var Map = CartografiasInfantis.Map = {};
 Map.Api = {
   getApi: function() {
     var loaded = 
-      window.hasOwnProperty('google') 
+      window.google 
       && window.google.hasOwnProperty('maps');
 
     if (loaded) return window.google.maps;
