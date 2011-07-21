@@ -114,6 +114,8 @@ html, body, header, #container, #main{
   -moz-box-shadow: 0.5px -3px 24px #666;
   -webkit-box-shadow: 0.5px -3px 24px #666;
   box-shadow: 0.5px -3px 24px #666;
+  position: relative;
+  z-index: 1000;
 }
   .logo {
     width: 200px
