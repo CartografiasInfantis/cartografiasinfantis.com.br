@@ -33,15 +33,17 @@ Places.PlacesController.InstanceMethods = {
 Places.GMapsDataSource = function() {
 }
 
-Places.GMapsDataSource.prototype = {
-  getPlaceData: function(address, callback) {
-    Map.Api.geocodeAddress(address, function(placeData) {
-      var place = new Places.Place({
-        coordinates: Map.Api.getCoordinatesOf(placeData),
-        name: address
-      });
+Places.GMapsDataSource.prototype = new CartografiasInfantis.Broadcaster;
 
-      callback.call(window, place);
-    });
-  }
+Places.GMapsDataSource.prototype.getPlaceData = function(address) {
+  var self = this;
+
+  Map.Api.geocodeAddress(address, function(placeData) {
+    var place = self.generatePlaceObject(placeData);
+
+    self.broadcast('place:generated', [place]);
+  });
+}
+Places.GMapsDataSource.prototype.generatePlaceObject = function(geocodedSource) {
+  return new Places.Place(geocodedSource);
 }

@@ -20,33 +20,47 @@ describe('Places', function() {
   });
 
   describe('GMapsDataSource', function() {
-    var dataSource;
+    var dataSource
+      , mockPlaceResponse = {
+        coordinates: {lat: 30, lng: -20}
+      };
 
     beforeEach(function() {
       dataSource = new Places.GMapsDataSource();
+
+      spyOn(Map.Api, 'geocodeAddress')
+        .andCallFake(function(address, callback) {
+          setTimeout(function() {
+            callback.call(callback, mockPlaceResponse);
+          }, 0);
+        });
     });
 
-    it('should create places async with gmaps data of a given address', function() {
-      var mockCallback = jasmine.createSpy('DataSource callback')
-        , stubAddress = 'foo address'
-        , stubCoordinates = {foo: 'coordinates'}
-        , mockGeocoderResponse = {
-            geometry: {location: stubCoordinates}
-          };
+    it('should generate a place object from geocoded data', function() {
+      var mockSource = mockPlaceResponse
+        , generatedPlace;
 
-      spyOn(Map.Api, 'geocodeAddress').andCallFake(function(addr, callback) {
-        setTimeout(function() {
-          callback.call(window, mockGeocoderResponse);
-        }, 0);
+      generatedPlace = dataSource.generatePlaceObject(mockSource);
+
+      expect(generatedPlace instanceof Places.Place).toBeTruthy();
+      expect(generatedPlace.coordinates).toEqual({lat: 30, lng: -20});
+    });
+
+    it('should create place from a given address and broadcast creation', function() {
+      var mockCallback = jasmine.createSpy('DataSource#observer')
+        , mockPlaceInstance = jasmine.any('object');
+
+      spyOn(dataSource, 'generatePlaceObject')
+        .andReturn(mockPlaceInstance);
+
+      dataSource.registerObserver(mockCallback, 'place:generated');
+      dataSource.getPlaceData('foo address');
+      
+      waitsFor(function() {
+        return mockCallback.wasCalled;
       });
-
-      dataSource.getPlaceData(stubAddress, mockCallback);
-
-      waitsFor(function() { return mockCallback.wasCalled; });
       runs(function() {
-        var callbackArgument = mockCallback.mostRecentCall.args[0];
-        expect(callbackArgument instanceof Places.Place).toBeTruthy();
-        expect(callbackArgument.coordinates).toEqual(stubCoordinates);
+        expect(mockCallback).toHaveBeenCalledWith(mockPlaceInstance);
       });
     });
   });
