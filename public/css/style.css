@@ -36,7 +36,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
 input, select { vertical-align: middle; }
 
-body { font:13px/1.231 sans-serif; *font-size:small; } 
+body { font-family: arial, sans-serif; font-size: 13px; color: #444; background: #FFF } 
 select, input, textarea, button { font:99% sans-serif; }
 pre, code, kbd, samp { font-family: monospace, sans-serif; }
 
@@ -76,7 +76,7 @@ button {  width: auto; overflow: visible; }
 
 body, select, input, textarea {  color: #444; }
 h1, h2, h3, h4, h5, h6 { font-weight: bold; }
-a, a:active, a:visited { color: #607890; }
+a, a:active, a:visited { color: #607890; text-decoration: none; }
 a:hover { color: #036; }
 
 /*
@@ -117,7 +117,7 @@ html, body, header, #container, #main{
 #sidebar {
   padding: 20px;
   float: left;
-  background-color: #F5F5F5;
+  background-color: #ECECEC;
   width: 200px;
   border-right: 10px solid white;
   -moz-box-shadow: 0.5px -3px 24px #333;
@@ -130,26 +130,54 @@ html, body, header, #container, #main{
     width: 200px
   }
 
-  #sidebar ul {
+  #sidebar nav {
     text-align: left;
     font-size: 1.2em;
     margin-top: 20px;
   }
-    #sidebar ul a {
-      text-decoration: none;
-    }
+
+  #sidebar nav.main {
+    letter-spacing: 0.2em;
+    font-family: 'Varela';
+    text-transform: uppercase;
+    margin: 40px -20px 0;
+  }
+
+  #sidebar nav.main li {
+      border-top: 1px solid #BBB;
+      text-align: center;
+  }
+  #sidebar nav.main li.last {
+    border-bottom: 1px solid #BBB;
+  }
+  #sidebar nav.main li a {
+    color: #808080;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #FFF;
+    filter: dropshadow(color=#FFF, offx=1, offy=1);
+    display: block;
+    padding: 10px 20px;
+    border-top: 1px solid #FFF;
+  }
+  #sidebar nav.main li.last a {
+    border-bottom: 1px solid #FFF;
+  }
+  #sidebar nav.main li:hover {
+    background: #FFF;
+  }
 
   .credits {
     position: absolute;
     bottom: 50px;
-    margin: 0 6%
   }
-    img {
-      width: 190px;
+  .credits img {
+      width: 110px;
     }
-    aside {
-      margin-top: 5px;
-      width: 190px;
+  .credits aside {
+      float: right;
+
+      margin: 7px 0 0 10px;
+      width: 100px;
       font-style: italic;
       font-size: 0.8em;
     }
