@@ -3,13 +3,26 @@ var map = {
     var places = ['Parcão, Porto Alegre', 'Jardim Botânico, Porto Alegre']
       , center = places[Math.round(Math.random() * (places.length - 1))]
 
-    api.geocodeAddress(center, function(place) {
-      var map = new CartografiasInfantis.Map.Widget([])
-        , element = document.getElementById('map');
+    var dataSource = new CartografiasInfantis.Places.GMapsDataSource()
+      , controller = new CartografiasInfantis.Places.PlacesController()
+      , map        = document.getElementById('map')
+      , canvas     = new CartografiasInfantis.Map.MapCanvas(map)
 
-      map.setCenter(api.getCoordinatesOf(place));
-      map.renderIn(element);
-    });
+    dataSource.registerObserver(
+        function() { 
+          controller.addPlace.apply(controller, arguments); 
+        }, 
+        'place:generated');
+    controller.registerObserver(
+        function() { 
+          canvas.addMarker.apply(canvas, arguments); 
+          canvas.centerIn(arguments[0].coordinates);
+        },
+        'places:added');
+
+    for (var i in places) {
+      dataSource.getPlaceData(places[i]);
+    }
   }
 };
 

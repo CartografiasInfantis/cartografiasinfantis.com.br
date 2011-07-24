@@ -81,33 +81,7 @@ Map.MapCanvas.prototype = {
   addMarker: function(marker) {
     Map.Api.renderMapMarker(this.map, marker);
   },
-  paintIn: function(element) {
-    var map = Map.Api.renderMap(element, this.options)
-      , markers = this.markers;
-
-    for (var i = markers.length; --i >= 0;) {
-      Map.Api.renderMapMarker(map, markers[i]);
-    }
+  centerIn: function(coordinates) {
+    this.map.setCenter(Map.Api.getCoordinates(coordinates.lat, coordinates.lng));
   }
 };
-
-Map.Widget = function(collection) {
-  this.collection = collection;
-  this.options = {
-    mapTypeId: Map.Api.getMapType('satellite'),
-    zoom: 15
-  };
-};
-
-Map.Widget.prototype = {
-  setCenter: function(coordinates) {
-    this.options.center = coordinates;
-  },
-  renderIn: function(element) {
-    Map.Api.renderMap(element, this.options);
-    
-    for (var i = this.collection.length; --i >= 0;) {
-      
-    }
-  }
-}
