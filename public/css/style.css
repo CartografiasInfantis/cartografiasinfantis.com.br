@@ -44,7 +44,7 @@ html { overflow-y: scroll; }
 a:hover, a:active { outline: none; }
 ul, ol { margin-left: 2em; }
 ol { list-style-type: decimal; }
-nav ul, nav li { margin: 0; list-style:none; list-style-image: none; }
+nav ul, nav li, li, ul { margin: 0; list-style:none; list-style-image: none; }
 small { font-size: 85%; }
 strong, th { font-weight: bold; }
 em { font-style: italic; }
@@ -90,9 +90,10 @@ a:hover { color: #036; }
 /* headings */
 
 .h1 {
+  padding: 5px 10px;
   font-family: arial;
   font-size: 2.3em;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   text-shadow: -1px 1px 1px #F0F0F0;
   filter: dropshadow(color=#F0F0F0, offx=-1, offy=1); 
 }
@@ -107,7 +108,7 @@ html, body, header, #container, #main{
 .overlay {
   position: absolute;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.6);
   height: 100%;
   width: 100%
 }
@@ -217,37 +218,20 @@ html, body, header, #container, #main{
 
 #content {
   z-index: 1000;
-  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
   position: relative;
   margin: 0 auto;
-  width: 700px;
-  border: 1px solid #ffaf4b;
-  background: #ffaf4b; /* Old browsers */
-  background: -moz-linear-gradient(top, #ffaf4b 0%, #ff920a 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffaf4b), color-stop(100%,#ff920a)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #ffaf4b 0%,#ff920a 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #ffaf4b 0%,#ff920a 100%); /* Opera11.10+ */
-  background: -ms-linear-gradient(top, #ffaf4b 0%,#ff920a 100%); /* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', endColorstr='#ff920a',GradientType=0 ); /* IE6-9 */
-  background: linear-gradient(top, #ffaf4b 0%,#ff920a 100%); /* W3C */
-  -moz-box-shadow: 0.5px -3px 24px #333;
-  -webkit-box-shadow: 0.5px -3px 24px #333;
-  box-shadow: 0.5px -3px 24px #333;
-  -moz-border-radius-topleft: 0px;
-  -moz-border-radius-topright: 0px;
-  -moz-border-radius-bottomright: 15px;
-  -moz-border-radius-bottomleft: 15px;
-  -webkit-border-radius: 0px 0px 15px 15px;
-  border-radius: 0px 0px 15px 15px; 
+  margin-top: 20px;
+  width: 720px;
 }
 
   #content .images {
+    padding: 0 10px;
     position: relative;
     z-index: 1; /* prevent shadows falling behind containers with backgrounds */
     overflow: hidden;
     list-style: none;
     margin: 0;
-    padding: 0;
   }
 
   #content figure {
@@ -257,9 +241,6 @@ html, body, header, #container, #main{
     border: 1px solid #efefef;
     margin: 0 20px 20px 0;
     background: #fff;
-    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
-    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
   }
 
   #content .images figure:before,
@@ -272,32 +253,24 @@ html, body, header, #container, #main{
     width: 70%;
     max-width: 300px; /* avoid rotation causing ugly appearance at large container widths */
     height: 55%;
-    -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    -webkit-transform: skew(-15deg) rotate(-6deg);
-    -moz-transform: skew(-15deg) rotate(-6deg);
-    -ms-transform: skew(-15deg) rotate(-6deg);
-    -o-transform: skew(-15deg) rotate(-6deg);
-    transform: skew(-15deg) rotate(-6deg);
   }
 
   #content .images figure:after {
     left: auto;
     right: 10px;
-    -webkit-transform: skew(15deg) rotate(6deg);
-    -moz-transform: skew(15deg) rotate(6deg);
-    -ms-transform: skew(15deg) rotate(6deg);
-    -o-transform: skew(15deg) rotate(6deg);
-    transform: skew(15deg) rotate(6deg);
   }
 
 figure {
+  -moz-box-shadow: 0 3px 10px #CCC;
   float: left;
   margin: 0 10px 0 0;
 }
 figure.last {
   margin: 0 !important
+}
+
+figure:hover {
+  -moz-box-shadow: 0 3px 10px #666;
 }
   figure img {
     width: 208px;
@@ -314,15 +287,35 @@ details {
 .expand {
   float: right;
 }
-  
-  
+
+.utils {
+  float: left;
+  width: 718px;
+  background: -moz-linear-gradient(center top , #FFF, #EEE);
+  border: 1px solid #CCC;
+}
+
+.utils li {
+   border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #CCCCCC;
+    float: left;
+    height: 18px;
+    line-height: 18px;
+    margin: 0;
+    padding: 5px 5px 2px;
+}
+ 
 .work figure {
   float: none !important;
   margin: 0 !important;
   padding: 10px !important;
+  -moz-box-shadow: none !important;
+}
+.work figure:hover {
+  -moz-box-shadow: none !important;
 }
   .work figure img {
-    width: 680px;
+    width: 696px;
     height: auto;
   }
 
