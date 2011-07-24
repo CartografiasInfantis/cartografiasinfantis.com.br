@@ -82,21 +82,15 @@ describe('CartografiasInfantis.Map', function() {
 
     it('should render maps in the container', function() {
       var canvas = new Map.MapCanvas(mockElement);
-      canvas.paintIn(mockElement);
       expect(mockElement).toBeMap();
     });
 
     it('should render added markers', function() {
       var mockMarkerFoo = {coordinates: {lat: -31.22, lng: -50.31}}
-        , mockMarkerBar = {coordinates: {lat:  20.22, lng:  60.34}}
-        , canvas = new Map.MapCanvas();
+        , canvas = new Map.MapCanvas(mockElement);
 
       canvas.addMarker(mockMarkerFoo);
-      canvas.addMarker(mockMarkerBar);
-
-      canvas.paintIn(mockElement);
       expect(generatedMap).toHaveMarkerInCoordinates(-31.22, -50.31);
-      expect(generatedMap).toHaveMarkerInCoordinates( 20.22,  60.34);
     });
   });
 });

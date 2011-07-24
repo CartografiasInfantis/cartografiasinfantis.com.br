@@ -64,14 +64,20 @@ Map.ApiLoader = {
   }
 }
 
-Map.MapCanvas = function(options) {
-  this.options = options || {};
-  this.markers = [];
+Map.MapCanvas = function(element) {
+  this.getElement = function() {return element}
+  this.options = {
+    backgroundColor: '#33bbdd',
+    mapTypeId: Map.Api.getMapType('satellite'),
+    streetViewControl: false,
+    zoom: 4
+  };
+  this.map = Map.Api.renderMap(this.getElement(), this.options);
 }
 
 Map.MapCanvas.prototype = {
   addMarker: function(marker) {
-    this.markers.push(marker);
+    Map.Api.renderMapMarker(this.map, marker);
   },
   paintIn: function(element) {
     var map = Map.Api.renderMap(element, this.options)
