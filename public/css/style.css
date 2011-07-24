@@ -47,6 +47,7 @@ ol { list-style-type: decimal; }
 nav ul, nav li { margin: 0; list-style:none; list-style-image: none; }
 small { font-size: 85%; }
 strong, th { font-weight: bold; }
+em { font-style: italic; }
 td { vertical-align: top; }
 
 sub, sup { font-size: 75%; line-height: 0; position: relative; }
@@ -253,7 +254,26 @@ details {
 }
   
   
-  
+.work img {
+  width: 700px
+}
+
+.work .title {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 1.2em;
+  letter-spacing: 0.2em;
+}
+
+.work .who,
+.work .where{
+  padding: 10px 0 0 25px;
+  background: url(images/who.png) no-repeat left 4px;
+}
+
+.work .where {
+  background-image: url(images/where.png)
+}
   
   
   
