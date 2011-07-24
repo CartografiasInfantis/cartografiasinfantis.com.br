@@ -35,7 +35,9 @@ Map.Api = {
   },
   renderMapMarker: function(map, markerData) {
     var api = this.getApi()
-      , marker = new api.Marker(markerData);
+      , marker = new api.Marker({
+          position: this.getCoordinates(markerData.coordinates.lat, markerData.coordinates.lng)
+          });
 
     marker.setMap(map);
   }

@@ -45,5 +45,8 @@ Places.GMapsDataSource.prototype.getPlaceData = function(address) {
   });
 }
 Places.GMapsDataSource.prototype.generatePlaceObject = function(geocodedSource) {
-  return new Places.Place(geocodedSource);
+  var coordinates = CartografiasInfantis.Map.Api.getCoordinatesOf(geocodedSource);
+  return new Places.Place({
+    coordinates: {lat: coordinates.lat(), lng: coordinates.lng()}
+  });
 }

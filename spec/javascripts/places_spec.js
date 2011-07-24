@@ -22,7 +22,7 @@ describe('Places', function() {
   describe('GMapsDataSource', function() {
     var dataSource
       , mockPlaceResponse = {
-        coordinates: {lat: 30, lng: -20}
+        geometry: { location: {lat: function() {return 30}, lng: function() {return -20}} }
       };
 
     beforeEach(function() {
