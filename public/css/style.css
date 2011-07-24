@@ -97,11 +97,19 @@ a:hover { color: #036; }
   filter: dropshadow(color=#F0F0F0, offx=-1, offy=1); 
 }
 
-/* grid */
+
 
 html, body, header, #container, #main{
   height: 100%;
   overflow-x: hidden;
+}
+
+.overlay {
+  position: absolute;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  width: 100%
 }
 
 #map {
@@ -208,6 +216,7 @@ html, body, header, #container, #main{
     }
 
 #content {
+  z-index: 1000;
   padding: 20px;
   position: relative;
   margin: 0 auto;
