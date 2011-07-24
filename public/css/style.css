@@ -316,9 +316,15 @@ details {
 }
   
   
-.work img {
-  width: 700px
+.work figure {
+  float: none !important;
+  margin: 0 !important;
+  padding: 10px !important;
 }
+  .work figure img {
+    width: 680px;
+    height: auto;
+  }
 
 .work .title {
   font-style: italic;
@@ -327,14 +333,9 @@ details {
   letter-spacing: 0.2em;
 }
 
-.work .who,
-.work .where{
-  padding: 10px 0 0 25px;
-  background: url(images/who.png) no-repeat left 4px;
-}
-
 .work .where {
-  background-image: url(images/where.png)
+  padding: 8px 0 0 18px;
+  background: url(images/where.png) no-repeat left 5px;
 }
   
   
