@@ -166,6 +166,31 @@ html, body, header, #container, #main{
     background: #FFF;
   }
 
+  #sidebar nav.social li a {
+    margin: 0 15px 0 0;
+    padding-top: 50px;
+    display: block;
+    float: left;
+    background-position: left top;
+    background-repeat: no-repeat;
+    height: 48px;
+    width: 48px;
+    font-size: 0.7em;
+    text-align: center;
+  }
+
+    nav.social .twitter a {
+      background-image: url(images/twitter.png);
+    }
+    nav.social .facebook a {
+      background-image: url(images/facebook.png);
+    }
+    nav.social .blog a {
+      background-image: url(images/posterous.png);
+    }
+
+
+
   .credits {
     position: absolute;
     bottom: 50px;
