@@ -2,4 +2,4 @@
 *.swo
 *.zip
 *.tar.gz
-
+.sass-cache/*

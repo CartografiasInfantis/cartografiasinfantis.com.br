@@ -6,5 +6,10 @@ module CartografiasInfantis
     get '/' do
       erb :index
     end
+
+    get '/css/:name.css' do
+      content_type 'text/css', :charset => 'utf-8'
+      scss :"css/#{params[:name]}"
+    end
   end
 end

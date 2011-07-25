@@ -1,0 +1,240 @@
+.h1 {
+  padding: 5px 10px;
+  font-family: arial;
+  font-size: 2.3em;
+  margin-bottom: 20px;
+  text-shadow: -1px 1px 1px #F0F0F0;
+  filter: dropshadow(color=#F0F0F0, offx=-1, offy=1); 
+}
+
+html, body, header, #container, #main{
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.overlay {
+  position: absolute;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.6);
+  height: 100%;
+  width: 100%
+}
+
+#map {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#main {
+  margin-left: 250px;
+}
+
+#sidebar {
+  padding: 20px;
+  float: left;
+  background-color: #ECECEC;
+  width: 200px;
+  border-right: 10px solid white;
+  -moz-box-shadow: 0.5px -3px 24px #333;
+  -webkit-box-shadow: 0.5px -3px 24px #333;
+  box-shadow: 0.5px -3px 24px #333;
+  position: fixed;
+  z-index: 1000;
+}
+  .logo {
+    width: 200px
+  }
+
+  #sidebar nav {
+    text-align: left;
+    font-size: 1.2em;
+    margin-top: 20px;
+  }
+
+  #sidebar nav.main {
+    letter-spacing: 0.2em;
+    font-family: 'Varela';
+    text-transform: uppercase;
+    margin: 40px -20px 0;
+  }
+
+  #sidebar nav.main li {
+      border-top: 1px solid #BBB;
+      text-align: center;
+  }
+  #sidebar nav.main li.last {
+    border-bottom: 1px solid #BBB;
+  }
+  #sidebar nav.main li a {
+    color: #808080;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #FFF;
+    filter: dropshadow(color=#FFF, offx=1, offy=1);
+    display: block;
+    padding: 10px 20px;
+    border-top: 1px solid #FFF;
+  }
+  #sidebar nav.main li.last a {
+    border-bottom: 1px solid #FFF;
+  }
+  #sidebar nav.main li:hover {
+    background: #FFF;
+  }
+
+  #sidebar nav.social li a {
+    margin: 0 15px 0 0;
+    padding-top: 50px;
+    display: block;
+    float: left;
+    background-position: left top;
+    background-repeat: no-repeat;
+    height: 48px;
+    width: 48px;
+    font-size: 0.7em;
+    text-align: center;
+  }
+
+    nav.social .twitter a {
+      background-image: url(images/twitter.png);
+    }
+    nav.social .facebook a {
+      background-image: url(images/facebook.png);
+    }
+    nav.social .blog a {
+      background-image: url(images/posterous.png);
+    }
+
+
+
+  .credits {
+    position: absolute;
+    bottom: 50px;
+  }
+  .credits img {
+      width: 110px;
+    }
+  .credits aside {
+      float: right;
+
+      margin: 7px 0 0 10px;
+      width: 100px;
+      font-style: italic;
+      font-size: 0.8em;
+    }
+
+#content {
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  position: relative;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 720px;
+}
+
+  #content .images {
+    padding: 0 10px;
+    position: relative;
+    z-index: 1; /* prevent shadows falling behind containers with backgrounds */
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+  }
+
+  #content figure {
+    position: relative;
+    float: left;
+    padding: 5px;
+    border: 1px solid #efefef;
+    margin: 0 20px 20px 0;
+    background: #fff;
+  }
+
+  #content .images figure:before,
+  #content .images figure:after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    width: 70%;
+    max-width: 300px; /* avoid rotation causing ugly appearance at large container widths */
+    height: 55%;
+  }
+
+  #content .images figure:after {
+    left: auto;
+    right: 10px;
+  }
+
+figure {
+  -moz-box-shadow: 0 3px 10px #CCC;
+  float: left;
+  margin: 0 10px 0 0;
+}
+figure.last {
+  margin: 0 !important
+}
+
+figure:hover {
+  -moz-box-shadow: 0 3px 10px #666;
+}
+  figure img {
+    width: 208px;
+    height: 208px;
+  }
+  
+details {
+  text-align: left;
+}
+  details summary {
+    float: left;
+  }
+
+.expand {
+  float: right;
+}
+
+.utils {
+  float: left;
+  width: 718px;
+  background: -moz-linear-gradient(center top , #FFF, #EEE);
+  border: 1px solid #CCC;
+}
+
+.utils li {
+   border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #CCCCCC;
+    float: left;
+    height: 18px;
+    line-height: 18px;
+    margin: 0;
+    padding: 5px 5px 2px;
+}
+ 
+.work figure {
+  float: none !important;
+  margin: 0 !important;
+  padding: 10px !important;
+  -moz-box-shadow: none !important;
+}
+.work figure:hover {
+  -moz-box-shadow: none !important;
+}
+  .work figure img {
+    width: 696px;
+    height: auto;
+  }
+
+.work .title {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 1.2em;
+  letter-spacing: 0.2em;
+}
+
+.work .where {
+  padding: 8px 0 0 18px;
+  background: url(images/where.png) no-repeat left 5px;
+}
+
