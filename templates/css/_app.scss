@@ -1,20 +1,21 @@
-.h1 {
-  padding: 5px 10px;
-  font-family: arial;
-  font-size: 2.3em;
-  margin-bottom: 20px;
-  text-shadow: -1px 1px 1px #F0F0F0;
-  filter: dropshadow(color=#F0F0F0, offx=-1, offy=1); 
-}
+@import "compass/css3";
 
 html, body, header, #container, #main{
   height: 100%;
   overflow-x: hidden;
 }
+.h1 {
+  padding: 5px 10px;
+  font-size: 2.3em;
+  margin-bottom: 20px;
+  @include text-shadow(-1px 1px 1px #F0F0F0);
+}
+
 
 .overlay {
   position: absolute;
   z-index: 100;
+  background: black;
   background: rgba(0, 0, 0, 0.6);
   height: 100%;
   width: 100%
@@ -36,9 +37,7 @@ html, body, header, #container, #main{
   background-color: #ECECEC;
   width: 200px;
   border-right: 10px solid white;
-  -moz-box-shadow: 0.5px -3px 24px #333;
-  -webkit-box-shadow: 0.5px -3px 24px #333;
-  box-shadow: 0.5px -3px 24px #333;
+  @include box-shadow(0.5px -3px 24px #333);
   position: fixed;
   z-index: 1000;
 }
@@ -125,6 +124,7 @@ html, body, header, #container, #main{
 
 #content {
   z-index: 1000;
+  background: #FFF;
   background: rgba(255, 255, 255, 0.9);
   position: relative;
   margin: 0 auto;
@@ -168,7 +168,7 @@ html, body, header, #container, #main{
   }
 
 figure {
-  -moz-box-shadow: 0 3px 10px #CCC;
+  @include box-shadow(0 3px 10px #CCC);
   float: left;
   margin: 0 10px 0 0;
 }
@@ -177,7 +177,7 @@ figure.last {
 }
 
 figure:hover {
-  -moz-box-shadow: 0 3px 10px #666;
+  @include box-shadow(0 3px 10px #666);
 }
   figure img {
     width: 208px;
@@ -198,7 +198,7 @@ details {
 .utils {
   float: left;
   width: 718px;
-  background: -moz-linear-gradient(center top , #FFF, #EEE);
+  @include background-image(linear-gradient(#fff, #eee));
   border: 1px solid #CCC;
 }
 
@@ -216,10 +216,10 @@ details {
   float: none !important;
   margin: 0 !important;
   padding: 10px !important;
-  -moz-box-shadow: none !important;
+  @include box-shadow(none);
 }
 .work figure:hover {
-  -moz-box-shadow: none !important;
+  @include box-shadow(none);
 }
   .work figure img {
     width: 696px;
