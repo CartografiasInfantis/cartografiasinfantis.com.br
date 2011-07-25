@@ -79,9 +79,40 @@ Map.MapCanvas = function(element) {
 
 Map.MapCanvas.prototype = {
   addMarker: function(marker) {
-    Map.Api.renderMapMarker(this.map, marker);
+    marker.marker.setMap(this.map);
   },
   centerIn: function(coordinates) {
-    this.map.setCenter(Map.Api.getCoordinates(coordinates.lat, coordinates.lng));
+    this.map.setCenter(coordinates);
   }
 };
+
+Map.Marker = function(props) {
+  this.coordinates = props.coordinates;
+  Map.Marker.createObject(this);
+}
+
+Map.Marker.createObject = function(instance) {
+  var api = Map.Api.getApi()
+    , events = ['click', 'mouseover', 'mouseout']
+    , marker;
+  
+  marker = new api.Marker({
+    position: instance.coordinates,
+    map: null,
+    flat: true
+  });
+
+  for (var i = events.length; --i >= 0;) {
+    (function(e) {
+      api.event.addListener(marker, e, 
+        function() {
+          instance.broadcast('marker:' + e, [instance]);
+        });
+    })(events[i]);
+  }
+
+  instance.marker = marker;
+}
+
+Map.Marker.prototype = new CartografiasInfantis.Broadcaster;
+

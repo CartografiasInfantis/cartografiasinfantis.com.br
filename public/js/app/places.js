@@ -27,6 +27,14 @@ Places.PlacesController.InstanceMethods = {
   addPlace: function(place) {
     this.collection.push(place);
     this.broadcast('places:added', [place, this]);
+  },
+  select: function(place) {
+    for (var i in this.collection) {
+      if (this.collection[i] == place) {
+        this.selectedPlaceIndex = i;
+        this.broadcast('places:selected', [place, this]);
+      }
+    }
   }
 }
 
@@ -45,8 +53,8 @@ Places.GMapsDataSource.prototype.getPlaceData = function(address) {
   });
 }
 Places.GMapsDataSource.prototype.generatePlaceObject = function(geocodedSource) {
-  var coordinates = CartografiasInfantis.Map.Api.getCoordinatesOf(geocodedSource);
   return new Places.Place({
-    coordinates: {lat: coordinates.lat(), lng: coordinates.lng()}
+    coordinates: Map.Api.getCoordinatesOf(geocodedSource),
+    name: geocodedSource.address_components[0].short_name
   });
 }

@@ -14,8 +14,18 @@ var map = {
         }, 
         'place:generated');
     controller.registerObserver(
-        function() { 
-          canvas.addMarker.apply(canvas, arguments); 
+        function(place, controller) {
+          var modal = qwery('.workshop')[0];
+          bonzo(qwery('.overlay')).removeClass('hidden');
+          bonzo(qwery('h1', modal)[0]).text(place.name);
+          bonzo(modal).removeClass('hidden');
+        },
+        'places:selected');
+    controller.registerObserver(
+        function(place, controller) { 
+          var marker = new CartografiasInfantis.Map.Marker(place);
+          marker.registerObserver(function() { controller.select(place) }, 'marker:click');
+          canvas.addMarker(marker); 
           canvas.centerIn(arguments[0].coordinates);
         },
         'places:added');
