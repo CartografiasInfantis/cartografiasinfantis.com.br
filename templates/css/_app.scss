@@ -204,13 +204,28 @@ details {
 
 .utils li {
    border-left: 1px solid #FFFFFF;
-    border-right: 1px solid #CCCCCC;
-    float: left;
-    height: 18px;
-    line-height: 18px;
-    margin: 0;
-    padding: 5px 5px 2px;
+   border-right: 1px solid #CCCCCC;
+   float: left;
+   height: 18px;
+   line-height: 18px;
+   margin: 0;
+   padding: 5px 5px 2px;
 }
+  .close a, .home a {
+    display: block;
+    background: url(images/2x2_grid-normal.png) no-repeat top right;
+    height: 16px;
+    width: 16px;
+  }
+  .close a:hover {
+    background-image: url(images/2x2_grid.png);
+  }
+  .home a {
+    background-image: url(images/home-normal.png);
+  }
+  .home a:hover {
+    background-image: url(images/home.png);
+  }
  
 .work figure {
   float: none !important;
