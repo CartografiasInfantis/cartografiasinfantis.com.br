@@ -22,7 +22,10 @@ describe('Places', function() {
   describe('GMapsDataSource', function() {
     var dataSource
       , mockPlaceResponse = {
-        geometry: { location: {lat: function() {return 30}, lng: function() {return -20}} }
+        geometry: { location: {lat: function() {return 30}, lng: function() {return -20}} },
+        address_components: [
+          {short_name: "Minha Casa"}
+        ]
       };
 
     beforeEach(function() {
@@ -43,7 +46,9 @@ describe('Places', function() {
       generatedPlace = dataSource.generatePlaceObject(mockSource);
 
       expect(generatedPlace instanceof Places.Place).toBeTruthy();
-      expect(generatedPlace.coordinates).toEqual({lat: 30, lng: -20});
+      expect(generatedPlace.coordinates.lat()).toEqual(30);
+      expect(generatedPlace.coordinates.lng()).toEqual(-20);
+      expect(generatedPlace.name).toEqual("Minha Casa");
     });
 
     it('should create place from a given address and broadcast creation', function() {
