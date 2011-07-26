@@ -35,7 +35,7 @@ html, body, header, #container, #main{
   padding: 20px;
   float: left;
   background-color: #ECECEC;
-  width: 200px;
+  width: 220px;
   border-right: 10px solid white;
   @include box-shadow(0.5px -3px 24px #333);
   position: fixed;
@@ -107,11 +107,12 @@ html, body, header, #container, #main{
 
 
   .credits {
-    position: absolute;
-    bottom: 50px;
+    clear: both;
+    float: left;
   }
   .credits img {
       width: 110px;
+      float: left;
     }
   .credits aside {
       float: right;
