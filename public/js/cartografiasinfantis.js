@@ -35,12 +35,12 @@ var map = {
               api_key: 'a8d2fcbfe9a664321258d29ea6bacb6d',
               photoset_id: workshop.photoset,
               callback: function(data) {
-                var modal = qwery('.workshop')[0]
-                  , list  = bonzo(qwery('.images', modal));
+                var modal = $('.workshop')
+                  , list  = modal.find('.images');
 
-                bonzo(qwery('.overlay')).removeClass('hidden');
-                bonzo(qwery('h1', modal)[0]).text(workshop.name);
-                bonzo(modal).removeClass('hidden');
+                $('.overlay').removeClass('hidden');
+                modal.find('h1').text(workshop.name);
+                modal.removeClass('hidden');
 
                 list.empty();
                 list.append((function(pictures){
