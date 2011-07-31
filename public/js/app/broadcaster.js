@@ -5,7 +5,7 @@ CartografiasInfantis.Broadcaster = function() {
 
 CartografiasInfantis.Broadcaster.prototype = {
   broadcast: function(event, args) {
-    bean.fire(this, event, [args]);
+    $(this).trigger(event, [args]);
   },
   registerObserver: function(observer, event) {
     var handlers = {};
@@ -13,7 +13,7 @@ CartografiasInfantis.Broadcaster.prototype = {
       return observer.apply(window, args);
     }
     handlers[event].toString = observer.toString;
-    bean.add(this, handlers);
+    $(this).bind(handlers);
   }
 }
 
