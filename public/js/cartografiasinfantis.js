@@ -57,7 +57,7 @@ var map = {
 
                   for (var p in pictures) {
                     imgurl = Flickr.Image.getURL(pictures[p]);
-                    figclass = p % 3 < 1 ? 'last' : '';
+                    figclass = ((p + 1) % 3 < 1) ? 'last' : '';
 
                     images.push("<figure class=\"" + figclass + "\"><a href=\"#\"><img src=\"" + imgurl + "\" /></a></figure>");
                   }
