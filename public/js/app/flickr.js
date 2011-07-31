@@ -37,6 +37,7 @@ Flickr.Service.Query.prototype.url = function() {
   return [Flickr.Service.URI, query.join('&')].join('?');
 }
 
+
 Flickr.Service.Query.prototype.generateCallback = function() {
   var self = this
     , callback = this.options.callback || function() {}
@@ -48,5 +49,28 @@ Flickr.Service.Query.prototype.generateCallback = function() {
 
   window[callbackKey] = callbackWrapper;
   this.options.jsoncallback = callbackKey;
+  delete this.options.callback;
 }
+
+Flickr.Image = {};
+Flickr.Image.getURL = function(photoData, size) {
+  var url = "http://farm{farm-id}.static.flickr.com/{server-id}/{id}_{secret}{size}.jpg";
+
+  return url
+    .replace('{farm-id}', photoData.farm)
+    .replace('{server-id}', photoData.server)
+    .replace('{id}', photoData.id)
+    .replace('{secret}', photoData.secret)
+    .replace('{size}', size ? '_' + size : '');
+}
+
+Flickr.Image.Sizes = {
+  SMALLEST: 's',
+  THUMBNAIL: 't',
+  SMALL: 'm',
+  DEFAULT: '',
+  MEDIUM: 'z',
+  LARGE: 'b',
+  ORIGINAL: 'o'
+};
 
