@@ -1,38 +1,71 @@
 var map = {
   apiLoaded: function(api) {
-    var places = ['Parcão, Porto Alegre', 'Jardim Botânico, Porto Alegre']
+    var places = [
+          {name: 'Hospital Psiquiátrico Santo Antônio',
+           photoset: '72157627270378070',
+           coordinates: api.getCoordinates('-30.0614453', '-51.18925949999999')},
+          {name: 'Parque da Redenção',
+           photoset: '72157627270126984',
+           coordinates: api.getCoordinates('-30.0370822', '-51.21541760000002')},
+          {name: 'Parque Moinhos de Vento, Parcão',
+           photoset: '72157627029526435',
+           coordinates: api.getCoordinates('-30.0271796', '-51.20103')},
+          {name: 'Estação de Tratamento de Água, DMAE',
+           photoset: '72157627270144404',
+           coordinates: api.getCoordinates('-30.0275931', '-51.2048762')},
+          {name: 'Cais do Porto',
+           photoset: '72157627146275459',
+           coordinates: api.getCoordinates('-30.0175', '-51.22833330000003')}
+        ]
       , center = places[Math.round(Math.random() * (places.length - 1))]
 
-    var dataSource = new CartografiasInfantis.Places.GMapsDataSource()
-      , controller = new CartografiasInfantis.Places.PlacesController()
+    var controller = new CartografiasInfantis.Places.PlacesController()
       , map        = document.getElementById('map')
       , canvas     = new CartografiasInfantis.Map.MapCanvas(map)
 
-    dataSource.registerObserver(
-        function() { 
-          controller.addPlace.apply(controller, arguments); 
-        }, 
-        'place:generated');
-    controller.registerObserver(
-        function(place, controller) {
-          var modal = qwery('.workshop')[0];
-          bonzo(qwery('.overlay')).removeClass('hidden');
-          bonzo(qwery('h1', modal)[0]).text(place.name);
-          bonzo(modal).removeClass('hidden');
-        },
-        'places:selected');
-    controller.registerObserver(
-        function(place, controller) { 
-          var marker = new CartografiasInfantis.Map.Marker(place);
-          marker.registerObserver(function() { controller.select(place) }, 'marker:click');
-          canvas.addMarker(marker); 
-          canvas.centerIn(arguments[0].coordinates);
-        },
-        'places:added');
-
     for (var i in places) {
-      dataSource.getPlaceData(places[i]);
+      (function(workshop) {
+        
+        var marker = new CartografiasInfantis.Map.Marker(workshop);
+
+        marker.registerObserver(
+          function() {
+            new Flickr.Service.Query({
+              method: 'flickr.photosets.getPhotos',
+              api_key: 'd22f048475a7f35e85a98a0c5ddb68a3',
+              photoset_id: workshop.photoset,
+              callback: function(data) {
+                var modal = qwery('.workshop')[0]
+                  , list  = bonzo(qwery('.images', modal));
+
+                bonzo(qwery('.overlay')).removeClass('hidden');
+                bonzo(qwery('h1', modal)[0]).text(workshop.name);
+                bonzo(modal).removeClass('hidden');
+
+                list.empty();
+                list.append((function(pictures){
+                  var images = [], imgurl
+                    , figclass;
+
+                  for (var p in pictures) {
+                    imgurl = Flickr.Image.getURL(pictures[p]);
+                    figclass = p % 3 < 1 ? 'last' : '';
+
+                    images.push("<figure class=\"" + figclass + "\"><a href=\"#\"><img src=\"" + imgurl + "\" /></a></figure>");
+                  }
+
+                  return images.join('');
+                })(data.photoset.photo));
+              }
+            });
+          }, 'marker:click');
+        
+        canvas.addMarker(marker);
+
+      })(places[i]);
     }
+
+    canvas.centerIn(center.coordinates);
   }
 };
 
