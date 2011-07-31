@@ -22,6 +22,14 @@ var map = {
     var controller = new CartografiasInfantis.Places.PlacesController()
       , map        = document.getElementById('map')
       , canvas     = new CartografiasInfantis.Map.MapCanvas(map)
+      , overlay    = $('.overlay');
+
+    overlay.bind('click', function() { 
+      $({})
+        .and(overlay)
+        .and('.workshop')
+        .and('.work').addClass('hidden'); 
+    });
 
     for (var i in places) {
       (function(workshop) {
@@ -38,7 +46,7 @@ var map = {
                 var modal = $('.workshop')
                   , list  = modal.find('.images');
 
-                $('.overlay').removeClass('hidden');
+                overlay.removeClass('hidden');
                 modal.find('h1').text(workshop.name);
                 modal.removeClass('hidden');
 
