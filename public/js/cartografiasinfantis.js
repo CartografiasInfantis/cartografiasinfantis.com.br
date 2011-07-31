@@ -32,7 +32,7 @@ var map = {
           function() {
             new Flickr.Service.Query({
               method: 'flickr.photosets.getPhotos',
-              api_key: 'd22f048475a7f35e85a98a0c5ddb68a3',
+              api_key: 'a8d2fcbfe9a664321258d29ea6bacb6d',
               photoset_id: workshop.photoset,
               callback: function(data) {
                 var modal = qwery('.workshop')[0]
