@@ -1,6 +1,12 @@
 describe('UI.Modal', function() {
   var UI = CartografiasInfantis.UI;
 
+  it('should be added to the DOM', function() {
+    var modal = new UI.Modal;
+
+    expect($('body').children().last()[0]).toEqual(modal.getElement()[0]);
+  });
+
   it('should open', function() {
     var modal = new UI.Modal;
     expect(modal.getElement()).notToBeVisible();

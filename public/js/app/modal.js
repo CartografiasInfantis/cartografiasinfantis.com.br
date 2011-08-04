@@ -5,7 +5,8 @@ var UI = CartografiasInfantis.UI;
 
 
 UI.Modal = function() {
-  var element = $(document.createElement('div')).hide();
+  var element = $('<div class="ui-modal">').hide();
+  element.appendTo('body');
   this.getElement = function() {
     return element;
   }
