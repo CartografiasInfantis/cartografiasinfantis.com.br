@@ -13,4 +13,11 @@ describe('UI.Modal', function() {
     modal.setContent('Foo!');
     expect(modal.getElement()).toHaveContent('Foo!');
   });
+
+  it('should close', function() {
+    var modal = new UI.Modal;
+    modal.open();
+    modal.close();
+    expect(modal.getElement()).notToBeVisible();
+  });
 });

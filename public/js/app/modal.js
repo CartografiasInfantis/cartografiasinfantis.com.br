@@ -20,3 +20,7 @@ UI.Modal.prototype.open = function() {
 UI.Modal.prototype.setContent = function(content) {
   this.getElement().html(content);
 }
+
+UI.Modal.prototype.close = function() {
+  this.getElement().hide();
+}
