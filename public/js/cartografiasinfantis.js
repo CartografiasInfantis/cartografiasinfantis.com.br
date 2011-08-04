@@ -22,7 +22,8 @@ var map = {
     var controller = new CartografiasInfantis.Places.PlacesController()
       , map        = document.getElementById('map')
       , canvas     = new CartografiasInfantis.Map.MapCanvas(map)
-      , overlay    = $('.overlay');
+      , overlay    = $('.overlay')
+      , mainContent = $('#content');
 
     overlay.bind('click', function() { 
       $({})
@@ -43,14 +44,18 @@ var map = {
               api_key: 'a8d2fcbfe9a664321258d29ea6bacb6d',
               photoset_id: workshop.photoset,
               callback: function(data) {
-                var modal = $('.workshop')
-                  , list  = modal.find('.images');
+                var modal = new CartografiasInfantis.UI.Modal({container: mainContent})
+                  , list  = $('<div class="images">')
+                  , title = $('<h1 class="h1">');
 
                 overlay.removeClass('hidden');
-                modal.find('h1').text(workshop.name);
-                modal.removeClass('hidden');
+                modal.getElement().addClass('workshop');
+                modal.getElement().append(title);
+                modal.getElement().append(list);
+                modal.open();
 
-                list.empty();
+                title.text(workshop.name);
+
                 list.append((function(pictures){
                   var images = [], imgurl
                     , figclass;
