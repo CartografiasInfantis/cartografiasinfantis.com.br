@@ -4,9 +4,13 @@ CartografiasInfantis.UI = CartografiasInfantis.UI || {};
 var UI = CartografiasInfantis.UI;
 
 
-UI.Modal = function() {
+UI.Modal = function(opts) {
+  var opts = opts || {};
+
+  var container = opts.container || 'body';
   var element = $('<div class="ui-modal">').hide();
-  element.appendTo('body');
+  element.appendTo(container);
+
   this.getElement = function() {
     return element;
   }

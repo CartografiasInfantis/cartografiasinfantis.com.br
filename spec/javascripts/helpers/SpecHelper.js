@@ -14,6 +14,18 @@ beforeEach(function() {
       var element = $(this.actual);
 
       return element.text() == content;
+    },
+    toContainChildNode: function(node) {
+      var element = $(this.actual);
+      var childNodes = element.children();
+
+      for (var i = childNodes.length; --i >= 0;) {
+        if (childNodes[i] === node) {
+          return true;
+        }
+      }
+
+      return false;
     }
   });
 });

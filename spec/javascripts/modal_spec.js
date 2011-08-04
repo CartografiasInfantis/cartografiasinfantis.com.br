@@ -7,6 +7,13 @@ describe('UI.Modal', function() {
     expect($('body').children().last()[0]).toEqual(modal.getElement()[0]);
   });
 
+  it('should be added to the passed container', function() {
+    var mockContainer = $('<container>');
+    var modal = new UI.Modal({container: mockContainer});
+
+    expect(mockContainer).toContainChildNode(modal.getElement()[0]);
+  });
+
   it('should open', function() {
     var modal = new UI.Modal;
     expect(modal.getElement()).notToBeVisible();
