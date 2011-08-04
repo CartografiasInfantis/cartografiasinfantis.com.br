@@ -16,3 +16,7 @@ UI.Modal.prototype = new CartografiasInfantis.Broadcaster;
 UI.Modal.prototype.open = function() {
   this.getElement().show();
 }
+
+UI.Modal.prototype.setContent = function(content) {
+  this.getElement().html(content);
+}

@@ -7,4 +7,10 @@ describe('UI.Modal', function() {
     modal.open();
     expect(modal.getElement()).toBeVisible();
   });
+
+  it('should set content', function() {
+    var modal = new UI.Modal;
+    modal.setContent('Foo!');
+    expect(modal.getElement()).toHaveContent('Foo!');
+  });
 });
