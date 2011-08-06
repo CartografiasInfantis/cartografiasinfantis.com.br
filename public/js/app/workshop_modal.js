@@ -21,3 +21,8 @@ UI.WorkshopModal.prototype.setTitle = function(title) {
   }
   tag.text(title);
 }
+
+UI.WorkshopModal.renderPicture = function(picture) {
+  var src = Flickr.Image.getURL(picture);
+  return $('<figure><a><img src="' + src + '"></a></figure>');
+}
