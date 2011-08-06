@@ -12,8 +12,14 @@ beforeEach(function() {
     },
     toHaveContent: function(content) {
       var element = $(this.actual);
+      var match = new RegExp(content).test(element.text());
 
-      return element.text() == content;
+      this.message = function() {
+        if (!match) {
+          return 'Expected "' + content +  '" but had "' + element.text() + '"';  
+        } 
+      };
+      return match;
     },
     toContainChildNode: function(node) {
       var element = $(this.actual);
