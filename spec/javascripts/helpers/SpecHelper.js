@@ -21,6 +21,12 @@ beforeEach(function() {
       };
       return match;
     },
+    notToHaveContent: function(content) {
+      var element = this.actual;
+      var match = !(new RegExp(content).test(element.text()));
+
+      return match;
+    },
     toContainChildNode: function(node) {
       var element = $(this.actual);
       var childNodes = element.children();
