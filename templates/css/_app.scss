@@ -180,9 +180,14 @@ figure.last {
 figure:hover {
   @include box-shadow(0 3px 10px #666);
 }
-  figure img {
+  figure a {
+    display: block;
+    overflow: hidden;
     width: 208px;
     height: 208px;
+  }
+  figure a img {
+    width: 300px
   }
   
 details {
