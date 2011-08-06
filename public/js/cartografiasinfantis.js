@@ -21,7 +21,7 @@ var map = {
 
     var controller = new CartografiasInfantis.Places.PlacesController()
       , map        = document.getElementById('map')
-      , canvas     = new CartografiasInfantis.Map.MapCanvas(map)
+      , canvas     = new CartografiasInfantis.Map.MapCanvas(map, {zoom: 19})
       , overlay    = $('.overlay')
       , mainContent = $('#content');
 
@@ -50,8 +50,8 @@ var map = {
 
                 overlay.removeClass('hidden');
                 modal.getElement().addClass('workshop');
-                modal.getElement().append(title);
-                modal.getElement().append(list);
+                modal.addContent(title);
+                modal.addContent(list);
                 modal.open();
 
                 title.text(workshop.name);
