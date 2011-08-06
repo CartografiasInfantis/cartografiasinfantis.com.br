@@ -22,8 +22,8 @@ UI.Modal.prototype.open = function() {
   this.getElement().show();
 }
 
-UI.Modal.prototype.setContent = function(content) {
-  this.getElement().html(content);
+UI.Modal.prototype.addContent = function(content) {
+  this.getElement().append(content);
 }
 
 UI.Modal.prototype.close = function() {

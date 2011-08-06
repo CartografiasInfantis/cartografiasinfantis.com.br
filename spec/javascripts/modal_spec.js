@@ -21,10 +21,16 @@ describe('UI.Modal', function() {
     expect(modal.getElement()).toBeVisible();
   });
 
-  it('should set content', function() {
+  it('should add content', function() {
     var modal = new UI.Modal;
-    modal.setContent('Foo!');
-    expect(modal.getElement()).toHaveContent('Foo!');
+    var textContent = 'Foo!';
+    var nodeContent = $('<strong>Bar!</strong>');
+
+    modal.addContent(textContent);
+    modal.addContent(nodeContent);
+
+    expect(modal.getElement()).toHaveContent(textContent);
+    expect(modal.getElement()).toContainChildNode(nodeContent[0]);
   });
 
   it('should close', function() {

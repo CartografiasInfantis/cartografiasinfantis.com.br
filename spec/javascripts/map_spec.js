@@ -85,6 +85,12 @@ describe('CartografiasInfantis.Map', function() {
       expect(mockElement).toBeMap();
     });
 
+    it('should allow optional zoom', function() {
+      var canvas = new Map.MapCanvas(mockElement, {zoom: 10});
+
+      expect(canvas.options.zoom).toEqual(10);
+    });
+
     if (0)
     it('should render added markers', function() {
       var mockMarkerFoo = {coordinates: {lat: -31.22, lng: -50.31}}
