@@ -66,13 +66,14 @@ Map.ApiLoader = {
   }
 }
 
-Map.MapCanvas = function(element) {
+Map.MapCanvas = function(element, options) {
+  options = options || {};
   this.getElement = function() {return element}
   this.options = {
     backgroundColor: '#33bbdd',
     mapTypeId: Map.Api.getMapType('satellite'),
     streetViewControl: false,
-    zoom: 4
+    zoom: options.zoom || 4
   };
   this.map = Map.Api.renderMap(this.getElement(), this.options);
 }
