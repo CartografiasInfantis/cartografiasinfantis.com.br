@@ -77,9 +77,11 @@ html, body, header, #container, #main{
   #sidebar nav.main li.last a {
     border-bottom: 1px solid #FFF;
   }
-  #sidebar nav.main li:hover {
+  #sidebar nav.main li:hover,
+  #sidebar nav.main li.active {
     background: #FFF;
   }
+
 
   #sidebar nav.social li a {
     margin: 0 15px 0 0;
@@ -259,3 +261,14 @@ details {
   background: url(images/where.png) no-repeat left 5px;
 }
 
+
+.about {
+  padding: 10px;
+}
+
+  .about p {
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+    line-height: 1.6em;
+    margin-bottom: 10px;
+  }
