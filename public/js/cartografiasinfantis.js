@@ -1,7 +1,7 @@
 var map = {
   apiLoaded: function(api) {
     var places = [
-          {name: 'Hospital Psiquiátrico Santo Antônio',
+          {name: 'Hospital Psiquiátrico São Pedro',
            photoset: '72157627270378070',
            coordinates: api.getCoordinates('-30.0614453', '-51.18925949999999')},
           {name: 'Parque da Redenção',
