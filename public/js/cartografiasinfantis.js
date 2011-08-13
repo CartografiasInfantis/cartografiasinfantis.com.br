@@ -45,16 +45,13 @@ var map = {
               photoset_id: workshop.photoset,
               callback: function(data) {
                 var modal = new CartografiasInfantis.UI.Modal({container: mainContent})
-                  , list  = $('<div class="images">')
-                  , title = $('<h1 class="h1">');
+                  , list  = $('<div class="images">');
 
                 overlay.removeClass('hidden');
                 modal.getElement().addClass('workshop');
-                modal.addContent(title);
+                modal.setTitle(workshop.name);
                 modal.addContent(list);
                 modal.open();
-
-                title.text(workshop.name);
 
                 list.append((function(pictures){
                   var images = [], imgurl
