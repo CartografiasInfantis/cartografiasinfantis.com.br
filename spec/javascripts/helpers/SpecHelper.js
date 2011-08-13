@@ -21,14 +21,24 @@ beforeEach(function() {
       };
       return match;
     },
+    notToHaveContent: function(content) {
+      var element = this.actual;
+      var match = !(new RegExp(content).test(element.text()));
+
+      return match;
+    },
     toContainChildNode: function(node) {
       var element = $(this.actual);
       var childNodes = element.children();
 
-      for (var i = childNodes.length; --i >= 0;) {
-        if (childNodes[i] === node) {
-          return true;
+      if (node.tagName) {
+        for (var i = childNodes.length; --i >= 0;) {
+          if (childNodes[i] === node) {
+            return true;
+          }
         }
+      } else {
+        return element.find(node).length > 0;
       }
 
       return false;
