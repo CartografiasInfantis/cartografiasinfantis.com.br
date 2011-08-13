@@ -21,6 +21,17 @@ describe('UI.Modal', function() {
     expect(modal.getElement()).toBeVisible();
   });
 
+  it('should have a configurable title', function() {
+    var modal = new UI.Modal;
+
+    modal.setTitle('Foo!');
+    expect(modal.getElement()).toHaveContent('Foo!');
+
+    modal.setTitle('Bar!');
+    expect(modal.getElement()).notToHaveContent('Foo!');
+    expect(modal.getElement()).toHaveContent('Bar!');
+  });
+
   it('should add content', function() {
     var modal = new UI.Modal;
     var textContent = 'Foo!';
