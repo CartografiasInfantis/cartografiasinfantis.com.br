@@ -1,25 +1,28 @@
 describe('UI.Modal', function() {
   var UI = CartografiasInfantis.UI;
 
-  it('should be added to the DOM', function() {
+  it('should have a base element', function() {
     var modal = UI.Modal.create();
-
-    expect($('body').children().last()[0]).toEqual(modal.getElement()[0]);
+    
+    expect(modal.getElement()[0].tagName).toBeDefined();
   });
 
-  it('should be added to the passed container', function() {
+  it('should be added to the specified container', function() {
     var mockContainer = $('<container>');
-    var modal = UI.Modal.create({container: mockContainer});
+    var modal = UI.Modal.create();
+    modal.container = mockContainer;
+    modal.open();
 
     expect(mockContainer).toContainChildNode(modal.getElement()[0]);
   });
 
-  it('should open', function() {
+  it('should be added to body if no container when opened', function() {
     var modal = UI.Modal.create();
-    expect(modal.getElement()).notToBeVisible();
     modal.open();
-    expect(modal.getElement()).toBeVisible();
+
+    expect($('body')).toContainChildNode(modal.getElement()[0]);
   });
+
 
   it('should have a configurable title', function() {
     var modal = UI.Modal.create();
@@ -44,10 +47,11 @@ describe('UI.Modal', function() {
     expect(modal.getElement()).toContainChildNode(nodeContent[0]);
   });
 
-  it('should close', function() {
+  it('should be removed from container on close', function() {
+    var mockContainer = $('<container>');
     var modal = UI.Modal.create();
-    modal.open();
+    modal.getElement().appendTo(mockContainer);
     modal.close();
-    expect(modal.getElement()).notToBeVisible();
+    expect(mockContainer.children().length).toEqual(0);
   });
 });

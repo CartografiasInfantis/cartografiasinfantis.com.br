@@ -9,13 +9,9 @@ UI.Modal = function() {};
 UI.Modal.prototype = new CartografiasInfantis.Broadcaster;
 
 UI.Modal.create = function(opts) {
-  var modal = Object.create(UI.Modal.prototype);
-  var opts = opts || {};
+  var modal = Object.create(this.prototype);
 
-  var container = opts.container || 'body';
-  var element = $('<div class="ui-modal">').hide();
-  element.appendTo(container);
-
+  var element = $('<div class="ui-modal">');
   modal.getElement = function() {
     return element;
   };
@@ -26,6 +22,7 @@ UI.Modal.create = function(opts) {
 UI.Modal.prototype.getElement = function() {}
 
 UI.Modal.prototype.open = function() {
+  this.getElement().appendTo(this.container || 'body');
   this.getElement().show();
 }
 
@@ -48,5 +45,5 @@ UI.Modal.prototype.getTitle = function() {
 }
 
 UI.Modal.prototype.close = function() {
-  this.getElement().hide();
+  this.getElement().remove();
 }
