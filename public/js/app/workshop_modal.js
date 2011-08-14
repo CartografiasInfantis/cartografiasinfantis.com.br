@@ -13,15 +13,6 @@ UI.WorkshopModal = function() {
 
 UI.WorkshopModal.prototype = new UI.Modal;
 
-UI.WorkshopModal.prototype.setTitle = function(title) {
-  var tag = this.getElement().find('h1');
-  if (tag.length == 0) {
-    tag = $('<h1 class="h1">');
-    this.getElement().prepend(tag);
-  }
-  tag.text(title);
-}
-
 UI.WorkshopModal.renderPicture = function(picture) {
   var src = Flickr.Image.getURL(picture);
   return $('<figure><a><img src="' + src + '"></a></figure>');
