@@ -28,8 +28,20 @@ var map = {
     overlay.bind('click', function() { 
       $({})
         .and(overlay)
-        .and('.workshop')
-        .and('.work').addClass('hidden'); 
+        .and(mainContent)
+        .and(mainContent.children())
+        .addClass('hidden'); 
+    });
+
+    $('.page').addClass('hidden');
+
+    $('nav.main').find('a').bind('click', function() {
+      var id = this.href.toString().replace(/^.+#/, '');
+      var page = $.id(id);
+      $({})
+        .and(overlay)
+        .and(mainContent)
+        .and(page).removeClass('hidden');
     });
 
     for (var i in places) {
@@ -47,7 +59,9 @@ var map = {
                 var modal = new CartografiasInfantis.UI.Modal({container: mainContent})
                   , list  = $('<div class="images">');
 
-                overlay.removeClass('hidden');
+                $({})
+                  .and(overlay)
+                  .and(mainContent).removeClass('hidden');
                 modal.getElement().addClass('workshop');
                 modal.setTitle(workshop.name);
                 modal.addContent(list);
@@ -81,6 +95,4 @@ var map = {
 
 CartografiasInfantis.Map.ApiLoader.initialize(map);
 CartografiasInfantis.Map.ApiLoader.loadApi();
-
-
 

@@ -27,16 +27,14 @@
   <body>
     <div id="container">
     <header id="sidebar">
-      <a href="/">
-        <img src="images/logotipo.png" alt="Cartografias Infantis" class="logo" />
-      </a>
+      <img src="images/logotipo.png" alt="Cartografias Infantis" class="logo" />
       <nav class="main">
         <ul>
           <li>
-            <a href="/o-projeto.html">O projeto</a>
+            <a href="#sobre">O projeto</a>
           </li>
           <li class="last">
-            <a href="/realizadores.html">Realizadores</a>
+            <a href="#realizadores">Realizadores</a>
           </li>
         </ul>
       </nav>
@@ -73,10 +71,12 @@
 
     <div id="main" role="main">
       <div  class="overlay hidden"></div>
-      <section id="map">
-      </section>
+      <section id="map"></section>
 
-      <section id="content">
+      <section id="content" class="hidden">
+
+        <%= erb :about %>
+        <%= erb :authors %>
         
         <article class="work hidden">
           <figure>
