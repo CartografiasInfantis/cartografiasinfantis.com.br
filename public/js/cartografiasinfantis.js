@@ -38,6 +38,7 @@ var map = {
     $('nav.main').find('a').bind('click', function() {
       var id = this.href.toString().replace(/^.+#/, '');
       var page = $.id(id);
+      mainContent.children().addClass('hidden');
       $({})
         .and(overlay)
         .and(mainContent)
