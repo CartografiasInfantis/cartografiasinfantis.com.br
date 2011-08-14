@@ -151,6 +151,18 @@ html, body, header, #container, #main{
     background: #fff;
   }
 
+  #content figure a {
+    display: block;
+    overflow: hidden;
+    width: 208px;
+    height: 208px;
+  }
+
+  #content figure a img {
+    width: 300px;
+    height: auto;
+  }
+
   #content .images figure:before,
   #content .images figure:after {
     content: '';
