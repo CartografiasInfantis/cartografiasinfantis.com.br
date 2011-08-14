@@ -2,27 +2,27 @@ describe('UI.Modal', function() {
   var UI = CartografiasInfantis.UI;
 
   it('should be added to the DOM', function() {
-    var modal = new UI.Modal;
+    var modal = UI.Modal.create();
 
     expect($('body').children().last()[0]).toEqual(modal.getElement()[0]);
   });
 
   it('should be added to the passed container', function() {
     var mockContainer = $('<container>');
-    var modal = new UI.Modal({container: mockContainer});
+    var modal = UI.Modal.create({container: mockContainer});
 
     expect(mockContainer).toContainChildNode(modal.getElement()[0]);
   });
 
   it('should open', function() {
-    var modal = new UI.Modal;
+    var modal = UI.Modal.create();
     expect(modal.getElement()).notToBeVisible();
     modal.open();
     expect(modal.getElement()).toBeVisible();
   });
 
   it('should have a configurable title', function() {
-    var modal = new UI.Modal;
+    var modal = UI.Modal.create();
 
     modal.setTitle('Foo!');
     expect(modal.getElement()).toHaveContent('Foo!');
@@ -33,7 +33,7 @@ describe('UI.Modal', function() {
   });
 
   it('should add content', function() {
-    var modal = new UI.Modal;
+    var modal = UI.Modal.create();
     var textContent = 'Foo!';
     var nodeContent = $('<strong>Bar!</strong>');
 
@@ -45,7 +45,7 @@ describe('UI.Modal', function() {
   });
 
   it('should close', function() {
-    var modal = new UI.Modal;
+    var modal = UI.Modal.create();
     modal.open();
     modal.close();
     expect(modal.getElement()).notToBeVisible();
