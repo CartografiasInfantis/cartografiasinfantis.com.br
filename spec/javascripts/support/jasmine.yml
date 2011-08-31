@@ -11,6 +11,7 @@
 #   - dist/**/*.js
 #
 src_files:
+    - public/js/libs/obj_create.js
     - public/js/libs/ender.js
     - public/js/app.js
     - public/js/app/*.js
