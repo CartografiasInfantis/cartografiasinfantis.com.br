@@ -123,6 +123,20 @@ html, body, header, #container, #main{
       font-size: 0.8em;
     }
 
+.page .content {
+  padding: 15px;
+  padding-top: 0;
+  font-size: 16px;
+}
+
+#realizadores ul li {
+  margin-bottom: 10px;
+}
+
+#realizadores b {
+  font-weight: bold;
+}
+
 #content {
   z-index: 1000;
   background: #FFF;
