@@ -48,5 +48,6 @@ DEPENDENCIES
   jasmine
   json
   rake
+  rspec
   sass
   sinatra

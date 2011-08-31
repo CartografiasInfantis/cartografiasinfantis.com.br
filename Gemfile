@@ -9,4 +9,5 @@ gem 'json'
 
 group :test do
   gem 'jasmine'
+  gem 'rspec'
 end
