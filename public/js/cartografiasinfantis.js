@@ -58,15 +58,16 @@ var map = {
               api_key: 'a8d2fcbfe9a664321258d29ea6bacb6d',
               photoset_id: workshop.photoset,
               callback: function(data) {
-                var modal = new CartografiasInfantis.UI.Modal({container: mainContent})
+                var modal = UI.Modal.create()
                   , list  = $('<div class="images">');
 
                 $({})
                   .and(overlay)
                   .and(mainContent).removeClass('hidden');
+
+                modal.container = mainContent;
                 modal.getElement().addClass('workshop');
                 modal.setTitle(workshop.name);
-                modal.addContent(list);
                 modal.open();
 
                 list.append((function(pictures){
@@ -82,6 +83,8 @@ var map = {
 
                   return images.join('');
                 })(data.photoset.photo));
+
+                modal.addContent(list);
               }
             });
           }, 'marker:click');

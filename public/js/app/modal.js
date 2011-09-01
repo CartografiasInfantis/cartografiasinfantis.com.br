@@ -38,7 +38,7 @@ UI.Modal.prototype.getTitle = function() {
   var element = this.getElement();
   var title = element.find('h1');
   if (title.length == 0)  {
-    title = $('<h1>');
+    title = $('<h1 class="h1">');
     element.prepend(title);
   }
   return title;
