@@ -58,7 +58,7 @@ var map = {
               api_key: 'a8d2fcbfe9a664321258d29ea6bacb6d',
               photoset_id: workshop.photoset,
               callback: function(data) {
-                var modal = UI.Modal.create()
+                var modal = UI.WorkshopModal.create()
                   , list  = $('<div class="images">');
 
                 $({})
@@ -66,23 +66,14 @@ var map = {
                   .and(mainContent).removeClass('hidden');
 
                 modal.container = mainContent;
-                modal.getElement().addClass('workshop');
                 modal.setTitle(workshop.name);
                 modal.open();
 
-                list.append((function(pictures){
-                  var images = [], imgurl
-                    , figclass;
-
-                  for (var p in pictures) {
-                    imgurl = Flickr.Image.getURL(pictures[p]);
-                    figclass = ((p + 1) % 3 < 1) ? 'last' : '';
-
-                    images.push("<figure class=\"" + figclass + "\"><a href=\"#\"><img src=\"" + imgurl + "\" /></a></figure>");
-                  }
-
-                  return images.join('');
-                })(data.photoset.photo));
+                for (var p in data.photoset.photo) {
+                  var pic = UI.WorkshopModal.renderPicture(data.photoset.photo[p]);
+                  pic.attr('class', ((p + 1) % 3 < 1) ? 'last' : '');
+                  list.append(pic); // yes, this is horrible...
+                }
 
                 modal.addContent(list);
               }

@@ -4,17 +4,17 @@ CartografiasInfantis.UI = CartografiasInfantis.UI || {};
 var UI = CartografiasInfantis.UI;
 
 
-UI.Modal = function() {};
+UI.Modal = function() {
+  var element = $('<div class="ui-modal">');
+  this.getElement = function() {
+    return element;
+  };
+};
 
 UI.Modal.prototype = new CartografiasInfantis.Broadcaster;
 
 UI.Modal.create = function(opts) {
-  var modal = Object.create(this.prototype);
-
-  var element = $('<div class="ui-modal">');
-  modal.getElement = function() {
-    return element;
-  };
+  var modal = new this();
 
   return modal;
 };

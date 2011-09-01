@@ -11,6 +11,7 @@ UI.WorkshopModal = function() {
   }
 }
 
+UI.WorkshopModal.create = UI.Modal.create;
 UI.WorkshopModal.prototype = new UI.Modal;
 
 UI.WorkshopModal.renderPicture = function(picture) {
