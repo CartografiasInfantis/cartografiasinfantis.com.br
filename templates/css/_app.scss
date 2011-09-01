@@ -133,6 +133,19 @@ html, body, header, #container, #main{
   margin-bottom: 10px;
 }
 
+.page .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 15px;
+  font-weight: bold;
+  font-size: 16px;
+  background: #111;
+  padding: 0 5px;
+  color: #CCC;
+  -moz-border-radius: 2px 2px 2px 2px;
+  -webkit-border-radius: 2px 2px 2px 2px;
+}
 #realizadores ul li {
   margin-bottom: 10px;
 }

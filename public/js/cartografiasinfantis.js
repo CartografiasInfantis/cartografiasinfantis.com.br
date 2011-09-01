@@ -25,15 +25,16 @@ var map = {
       , overlay    = $('.overlay')
       , mainContent = $('#content');
 
-    overlay.bind('click', function() { 
+    function closeModal() {
       $({})
         .and(overlay)
         .and(mainContent)
         .and(mainContent.children())
         .addClass('hidden'); 
-    });
+    }
 
     $('.page').addClass('hidden');
+    overlay.and('.page .close').bind('click', closeModal);
 
     $('nav.main').find('a').bind('click', function() {
       var id = this.href.toString().replace(/^.+#/, '');
