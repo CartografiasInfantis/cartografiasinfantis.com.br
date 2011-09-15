@@ -35,7 +35,7 @@ html, body, header, #container, #main{
   float: left;
   background-color: #ECECEC;
   width: 220px;
-  height: 560px;
+  height: 600px;
   border: 10px solid white;
   border-left: 0;
   @include border-right-radius(5px);
@@ -166,7 +166,7 @@ html, body, header, #container, #main{
   position: relative;
   margin: 0 auto;
   width: 735px;
-  height: 600px;
+  height: 620px;
   overflow-y: auto;
   @include border-radius(5px);
 }
