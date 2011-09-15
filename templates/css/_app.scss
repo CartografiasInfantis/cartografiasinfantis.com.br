@@ -106,7 +106,9 @@ html, body, header, #container, #main{
     }
 
 
-
+  .facebook {
+    margin-top: 20px;
+  }
   .credits {
     position: absolute;
     bottom: 10px;
@@ -155,14 +157,18 @@ html, body, header, #container, #main{
 }
 
 #content {
+  top: 10px;
   z-index: 1000;
+  border: 10px solid #FFF;
+  border: 10px solid rgba(255, 255, 255, 0);
   background: #FFF;
   background: rgba(255, 255, 255, 0.9);
   position: relative;
   margin: 0 auto;
   width: 735px;
-  height: 680px;
-  overflow-y: scroll
+  height: 620px;
+  overflow-y: scroll;
+  @include border-radius(5px);
 }
 
   #content .images {
