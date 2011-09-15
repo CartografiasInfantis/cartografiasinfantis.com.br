@@ -157,7 +157,7 @@ html, body, header, #container, #main{
 }
 
 #content {
-  top: 10px;
+  top: 20px;
   z-index: 1000;
   border: 10px solid #FFF;
   border: 10px solid rgba(255, 255, 255, 0);
@@ -166,8 +166,8 @@ html, body, header, #container, #main{
   position: relative;
   margin: 0 auto;
   width: 735px;
-  height: 620px;
-  overflow-y: scroll;
+  height: 600px;
+  overflow-y: auto;
   @include border-radius(5px);
 }
 
