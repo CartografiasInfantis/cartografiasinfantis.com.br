@@ -1,3 +1,4 @@
+var closeBtn = '<a href="#" class="close">x</a>';
 var map = {
   apiLoaded: function(api) {
     var places = [
@@ -34,7 +35,8 @@ var map = {
     }
 
     $('.page').addClass('hidden');
-    overlay.and('.page .close').bind('click', closeModal);
+    overlay.bind('click', closeModal);
+    $('body').delegate('a.close', 'click', closeModal);
 
     $('nav.main').find('a').bind('click', function() {
       var id = this.href.toString().replace(/^.+#/, '');
@@ -67,6 +69,7 @@ var map = {
 
                 modal.container = mainContent;
                 modal.setTitle(workshop.name);
+                $(closeBtn).insertAfter(modal.getTitle());
                 modal.open();
 
                 for (var p in data.photoset.photo) {
