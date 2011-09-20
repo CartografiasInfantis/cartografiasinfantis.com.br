@@ -1,4 +1,3 @@
-var closeBtn = '<a href="#" class="close">x</a>';
 var map = {
   apiLoaded: function(api) {
     var places = getPlaces(api);

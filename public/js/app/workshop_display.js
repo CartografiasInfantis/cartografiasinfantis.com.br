@@ -1,3 +1,5 @@
+var closeBtn = '<a href="#" class="close">x</a>';
+
 function showWorkshop(workshop) {
   new Flickr.Service.Query({
     method: 'flickr.photosets.getPhotos',
