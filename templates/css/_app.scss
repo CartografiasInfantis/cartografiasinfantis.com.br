@@ -31,14 +31,13 @@ html, body, header, #container, #main{
 
 #sidebar {
   padding: 20px;
-  margin: 10px 0;
+  margin-top: -10px;
   float: left;
   background-color: #ECECEC;
   width: 220px;
   height: 600px;
-  border: 10px solid white;
-  border-left: 0;
-  @include border-right-radius(5px);
+  border-right: 10px solid white;
+  border-bottom: 10px solid white;
   z-index: 1000;
   position: relative;
 }
@@ -111,7 +110,7 @@ html, body, header, #container, #main{
   }
   .credits {
     position: absolute;
-    bottom: 10px;
+    margin-top: 60px;
   }
   .credits img {
       width: 110px;
