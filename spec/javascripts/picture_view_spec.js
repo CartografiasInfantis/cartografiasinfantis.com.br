@@ -4,6 +4,7 @@ describe('Picture View', function() {
   beforeEach(function() {
     subject = new PictureView();
     subject.selectors.title = 'p';
+    subject.selectors.imageContainer = 'span';
     subject.element = $("<div>\
         <span></span>\
         <p></p>\
@@ -19,5 +20,6 @@ describe('Picture View', function() {
 
   it('should render image', function() {
     subject.render({picture: picture});
+    expect(subject.image().attr('src')).toMatch(picture.id);
   });
 });
