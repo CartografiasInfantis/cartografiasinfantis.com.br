@@ -179,7 +179,7 @@ html, body, header, #container, #main{
     margin: 0;
   }
 
-  #content figure {
+  #content .images figure {
     position: relative;
     float: left;
     padding: 5px;
@@ -188,14 +188,14 @@ html, body, header, #container, #main{
     background: #fff;
   }
 
-  #content figure a {
+  #content .images figure a {
     display: block;
     overflow: hidden;
     width: 208px;
     height: 208px;
   }
 
-  #content figure a img {
+  #content .images figure a img {
     width: 300px;
     height: auto;
   }
@@ -229,7 +229,7 @@ figure.last {
 figure:hover {
   @include box-shadow(0 3px 10px #666);
 }
-  figure img {
+  #content .images figure img {
     width: 208px;
     height: 208px;
   }
@@ -277,28 +277,28 @@ details {
     background-image: url(images/home.png);
   }
  
-.work figure {
+.picture figure {
   float: none !important;
   margin: 0 !important;
   padding: 10px !important;
   @include box-shadow(none);
 }
-.work figure:hover {
+.picture figure:hover {
   @include box-shadow(none);
 }
-  .work figure img {
+  .picture figure img {
     width: 696px;
     height: auto;
   }
 
-.work .title {
+.picture .title {
   font-style: italic;
   font-weight: normal;
   font-size: 1.2em;
   letter-spacing: 0.2em;
 }
 
-.work .where {
+.picture .where {
   padding: 8px 0 0 18px;
   background: url(images/where.png) no-repeat left 5px;
 }

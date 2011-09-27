@@ -1,4 +1,10 @@
 var closeBtn = '<a href="#" class="close">x</a>';
+var picView = new PictureView();
+picView.element = $('.picture');
+picView.selectors.title = 'legend';
+picView.selectors.imageContainer = 'span';
+picView.element.find('.close').bind('click', function() {
+});
 
 function showWorkshop(workshop) {
   new Flickr.Service.Query({
@@ -17,9 +23,18 @@ function showWorkshop(workshop) {
       modal.open();
 
       for (var p in data.photoset.photo) {
-        var pic = UI.WorkshopModal.renderPicture(data.photoset.photo[p]);
-        pic.attr('class', ((p + 1) % 3 < 1) ? 'last' : '');
-        list.append(pic); // yes, this is horrible...
+        (function(picture) {
+          var pic = UI.WorkshopModal.renderPicture(picture);
+          pic
+            .attr('class', ((p + 1) % 3 < 1) ? 'last' : '')
+            .bind('click', function(){
+              picView.render({picture: picture});
+              closeModal();
+              showContent();
+              picView.show();
+            });
+          list.append(pic); // yes, this is horrible...
+        })(data.photoset.photo[p]);
       }
 
       modal.addContent(list);

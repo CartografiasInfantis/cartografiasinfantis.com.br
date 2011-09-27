@@ -6,7 +6,7 @@ var PictureView = function() {
 PictureView.prototype.render = function(data) {
   var image = $('<img>').attr('src', Flickr.Image.getURL(data.picture));
   this.title().text(data.picture.title);
-  this.element.find(this.selectors.imageContainer).append(image);
+  this.element.find(this.selectors.imageContainer).empty().append(image);
 }
 
 PictureView.prototype.title = function() {
@@ -15,4 +15,8 @@ PictureView.prototype.title = function() {
 
 PictureView.prototype.image = function() {
   return this.element.find(this.selectors.imageContainer).find('img');
+}
+
+PictureView.prototype.show = function() {
+  this.element.removeClass('hidden');
 }
